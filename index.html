@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Switch Example</title>
+    <style>
+        .image-switch {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img id="myImage" class="image-switch" src="https://gateway.pinata.cloud/ipfs/QmajyUBjaz7KFN2DLHPT9PuPAZYo9WJ1QyV2VmeB2y4PJn?_gl=1*175tv19*rs_ga*MTU2MDMxMDIwMS4xNjg1NzQwMTE0*rs_ga_5RMPXG14TE*MTY4NTkwMjA5Mi42LjEuMTY4NTkwMjA5NC41OC4wLjA" alt="Image 1">
+    
+    <script>
+        var image = document.getElementById("myImage");
+        var imageIndex = 1;
+        
+        image.onclick = function() {
+            imageIndex++;
+            if (imageIndex > 2) {
+                imageIndex = 1;
+            }
+            
+            if (imageIndex === 1) {
+                image.src = "https://gateway.pinata.cloud/ipfs/QmajyUBjaz7KFN2DLHPT9PuPAZYo9WJ1QyV2VmeB2y4PJn?_gl=1*175tv19*rs_ga*MTU2MDMxMDIwMS4xNjg1NzQwMTE0*rs_ga_5RMPXG14TE*MTY4NTkwMjA5Mi42LjEuMTY4NTkwMjA5NC41OC4wLjA";
+                image.alt = "Image 1";
+            } else if (imageIndex === 2) {
+                image.src = "https://gateway.pinata.cloud/ipfs/QmNrJZ37cvRNwX7qdGkTyvfXkXQwsfQ9NCRxKhUVzeoXQk?_gl=1*175tv19*rs_ga*MTU2MDMxMDIwMS4xNjg1NzQwMTE0*rs_ga_5RMPXG14TE*MTY4NTkwMjA5Mi42LjEuMTY4NTkwMjA5NC41OC4wLjA";
+                image.alt = "Image 2";
+            }
+        };
+    </script>
+</body>
+</html>
