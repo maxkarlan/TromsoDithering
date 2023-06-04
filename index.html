@@ -1,34 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image Switch Example</title>
+    <title>Image Overlay Example</title>
     <style>
-        .image-switch {
-            cursor: pointer;
+        .image-overlay {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .image-overlay img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        
+        .background-image {
+            z-index: -1;
+          	display: block;
         }
     </style>
 </head>
 <body>
-    <img id="myImage" class="image-switch" src="https://gateway.pinata.cloud/ipfs/QmajyUBjaz7KFN2DLHPT9PuPAZYo9WJ1QyV2VmeB2y4PJn?_gl=1*175tv19*rs_ga*MTU2MDMxMDIwMS4xNjg1NzQwMTE0*rs_ga_5RMPXG14TE*MTY4NTkwMjA5Mi42LjEuMTY4NTkwMjA5NC41OC4wLjA" alt="Image 1">
+    <div class="image-overlay">
+        <img class="background-image" src="TromsoHouseNoiseWBorder33.png" alt="Background Image">
+        <img id="house" src="HouseWBorder33.png" alt="house">
+        <img id="foreground" src="ForegroundWBorder33.png" alt="foreground">
+        <img id="sky" src="SkyWBorder33.png" alt="sky">
+    </div>
     
     <script>
-        var image = document.getElementById("myImage");
-        var imageIndex = 1;
-        
-        image.onclick = function() {
-            imageIndex++;
-            if (imageIndex > 2) {
-                imageIndex = 1;
-            }
-            
-            if (imageIndex === 1) {
-                image.src = "https://gateway.pinata.cloud/ipfs/QmajyUBjaz7KFN2DLHPT9PuPAZYo9WJ1QyV2VmeB2y4PJn?_gl=1*175tv19*rs_ga*MTU2MDMxMDIwMS4xNjg1NzQwMTE0*rs_ga_5RMPXG14TE*MTY4NTkwMjA5Mi42LjEuMTY4NTkwMjA5NC41OC4wLjA";
-                image.alt = "Image 1";
-            } else if (imageIndex === 2) {
-                image.src = "https://gateway.pinata.cloud/ipfs/QmNrJZ37cvRNwX7qdGkTyvfXkXQwsfQ9NCRxKhUVzeoXQk?_gl=1*175tv19*rs_ga*MTU2MDMxMDIwMS4xNjg1NzQwMTE0*rs_ga_5RMPXG14TE*MTY4NTkwMjA5Mi42LjEuMTY4NTkwMjA5NC41OC4wLjA";
-                image.alt = "Image 2";
-            }
+        var images = {
+            1: document.getElementById("house"),
+            2: document.getElementById("foreground"),
+            3: document.getElementById("sky")
         };
+        
+        var imageState = {
+            1: false,
+            2: false,
+            3: false
+        };
+        
+        document.addEventListener("keydown", function(event) {
+            var key = event.key;
+            
+            if (key === "1" || key === "2" || key === "3") {
+                var image = images[key];
+                var currentState = imageState[key];
+                
+                if (currentState) {
+                    image.style.display = "none";
+                } else {
+                    image.style.display = "block";
+                }
+                
+                imageState[key] = !currentState;
+            }
+        });
+      
+        var backgroundImg = document.querySelector(".background-image");
+        backgroundImg.style.display = "block";
     </script>
 </body>
 </html>
