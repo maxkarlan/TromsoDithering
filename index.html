@@ -45,20 +45,20 @@
             1: document.getElementById("sky"),
             2: document.getElementById("house"),
             3: document.getElementById("foreground"),
-          	4: document.getElementById("pepe")
+          	p: document.getElementById("pepe")
         };
         
         var imageState = {
             1: false,
             2: false,
             3: false,
-          	4: false
+          	p: false
         };
         
         document.addEventListener("keydown", function(event) {
             var key = event.key;
             
-            if (key === "1" || key === "2" || key === "3"|| key === "4") {
+            if (key === "1" || key === "2" || key === "3"|| key === "p") {
                 var image = images[key];
                 var currentState = imageState[key];
                 
