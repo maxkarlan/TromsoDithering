@@ -37,25 +37,28 @@
         <img id="house" src="HouseWBorder33.png" alt="house">
         <img id="foreground" src="ForegroundWBorder33.png" alt="foreground">
         <img id="sky" src="SkyWBorder33.png" alt="sky">
+      	<img id="pepe" src="PepeCutout.png" alt="pepe">
     </div>
     
     <script>
         var images = {
             1: document.getElementById("sky"),
             2: document.getElementById("house"),
-            3: document.getElementById("foreground")
+            3: document.getElementById("foreground"),
+          	4: document.getElementById("pepe")
         };
         
         var imageState = {
             1: false,
             2: false,
-            3: false
+            3: false,
+          	4: false
         };
         
         document.addEventListener("keydown", function(event) {
             var key = event.key;
             
-            if (key === "1" || key === "2" || key === "3") {
+            if (key === "1" || key === "2" || key === "3"|| key === "4") {
                 var image = images[key];
                 var currentState = imageState[key];
                 
@@ -67,7 +70,7 @@
                 
                 imageState[key] = !currentState;
             }
-            else if (key === "4") {
+            else if (key === "5") {
             	for (var key in images) {
                 var image = images[key];
                 var currentState = imageState[key];
