@@ -69,6 +69,15 @@
                 }
                 
                 imageState[key] = !currentState;
+                              // Check if image 2 is toggled on, and if so, toggle off image 4
+                if (key === "2" && imageState[4]) {
+                    var image4 = images[4];
+                  	var image2 = images[2];
+                    image4.style.display = "none";
+                  	image2.style.display = "none"
+                    imageState[4] = false;
+                  	imageState[2] = false;
+                }
             }
             else if (key === "5") {
             	for (var key in images) {
