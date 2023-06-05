@@ -35,23 +35,23 @@
     <div class="image-overlay">
         <img class="background-image" src="TromsoHouseNoiseWBorder33.png" alt="Background Image">
         <img id="house" src="HouseWBorder33.png" alt="house">
-        <img id="foreground" src="ForegroundWBorder33.png" alt="foreground">
+        <img id="foreground" src="foreground.png" alt="foreground">
         <img id="sky" src="SkyWBorder33.png" alt="sky">
       	<img id="pepe" src="PepeCutout.png" alt="pepe">
     </div>
     
     <script>
         var images = {
-            1: document.getElementById("sky"),
+            3: document.getElementById("sky"),
             2: document.getElementById("house"),
-            3: document.getElementById("foreground"),
+            1: document.getElementById("foreground"),
           	p: document.getElementById("pepe")
         };
         
         var imageState = {
-            1: false,
-            2: false,
             3: false,
+            2: false,
+            1: false,
           	p: false
         };
         
