@@ -38,51 +38,102 @@
         <img id="foreground" src="foreground.png" alt="foreground">
         <img id="sky" src="SkyWBorder33.png" alt="sky">
       	<img id="pepe" src="PepeEyes.png" alt="pepe">
+      	<img id="tungsten" src="Tungsten.png" alt="Tungsten" style="display: none;">
+      
     </div>
     
-    <script>
-        var images = {
-            3: document.getElementById("sky"),
-            2: document.getElementById("house"),
-            1: document.getElementById("foreground"),
-          	p: document.getElementById("pepe")
-        };
-        
-        var imageState = {
-            3: false,
-            2: false,
-            1: false,
-          	p: false
-        };
-        
-        document.addEventListener("keydown", function(event) {
-            var key = event.key;
-            
-            if (key === "1" || key === "2" || key === "3"|| key === "p") {
-                var image = images[key];
-                var currentState = imageState[key];
-                
-                if (currentState) {
-                    image.style.display = "none";
-                } else {
-                    image.style.display = "block";
-                }
-                
-                imageState[key] = !currentState;
-                              // Check if image 2 is toggled on, and if so, toggle off image 4
-                if (key === "2" && imageState[4]) {
-                    var image4 = images[4];
-                  	var image2 = images[2];
-                    image4.style.display = "none";
-                  	image2.style.display = "none"
-                    imageState[4] = false;
-                  	imageState[2] = false;
+<script>
+    var images = {
+        3: document.getElementById("sky"),
+        2: document.getElementById("house"),
+        1: document.getElementById("foreground"),
+        p: document.getElementById("pepe"),
+        t: document.getElementById("tungsten")
+    };
+
+    var imageState = {
+        3: false,
+        2: false,
+        1: false,
+        p: false,
+        t: false
+    };
+
+    document.addEventListener("keydown", function(event) {
+        var key = event.key;
+
+        if (key === "1" || key === "2" || key === "3") {
+            var image = images[key];
+            var currentState = imageState[key];
+
+            if (currentState) {
+                image.style.display = "none";
+            } else {
+                image.style.display = "block";
+            }
+
+            imageState[key] = !currentState;
+
+            if (key === "1" && imageState["3"] && imageState["t"]) {
+                images["t"].style.display = "block";
+                imageState["t"] = true;
+            } else if ((key === "2" || key === "p") && imageState["t"]) {
+                images["t"].style.display = "none";
+                imageState["t"] = false;
+            }
+        }
+
+        if (key === "p") {
+            var pepe = images["p"];
+            var pepeState = imageState["p"];
+            var tungsten = images["t"];
+            var tungstenState = imageState["t"];
+
+            if (pepeState) {
+                pepe.style.display = "none";
+                imageState["p"] = false;
+            } else {
+                pepe.style.display = "block";
+                imageState["p"] = true;
+
+                if (tungstenState) {
+                    tungsten.style.display = "none";
+                    imageState["t"] = false;
                 }
             }
-        });
-      
-        var backgroundImg = document.querySelector(".background-image");
-        backgroundImg.style.display = "block";
-    </script>
+        }
+
+        if (key === "t") {
+            var tungsten = images["t"];
+            var tungstenState = imageState["t"];
+            var pepe = images["p"];
+            var pepeState = imageState["p"];
+
+            if (tungstenState) {
+                tungsten.style.display = "none";
+                imageState["t"] = false;
+            } else {
+                tungsten.style.display = "block";
+                imageState["t"] = true;
+
+                if (pepeState) {
+                    pepe.style.display = "none";
+                    imageState["p"] = false;
+                }
+            }
+        }
+
+        if (key === "2" && imageState["p"]) {
+            var pepe = images["p"];
+            pepe.style.display = "none";
+            imageState["p"] = false;
+        }
+    });
+
+    var backgroundImg = document.querySelector(".background-image");
+    backgroundImg.style.display = "block";
+</script>
+
+
 </body>
 </html>
