@@ -6,24 +6,28 @@
         body {
             overflow: hidden; /* Hide the scroll bar */
         }
-        .image-overlay {
-            position: relative;
-            width: calc(100% - 10px);
-            height: calc(100vh - 10px);
-          	overflow: hidden;
-          	margin: 5px;
-        }
-        
-        .image-overlay img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 100%;
-            display: none;
-        }
+    .image-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        overflow: hidden;
+        margin: 5px 5px 5px 0; /* Updated margin property */
+    }
+
+    .image-overlay img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        display: none;
+    }
         
         .background-image {
             z-index: -1;
