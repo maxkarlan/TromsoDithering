@@ -48,7 +48,7 @@
         2: document.getElementById("house"),
         1: document.getElementById("foreground"),
         p: document.getElementById("pepe"),
-        t: document.getElementById("tungsten")
+        w: document.getElementById("tungsten")
     };
 
     var imageState = {
@@ -56,7 +56,7 @@
         2: false,
         1: false,
         p: false,
-        t: false
+        w: false
     };
 
     document.addEventListener("keydown", function(event) {
@@ -74,20 +74,20 @@
 
             imageState[key] = !currentState;
 
-            if (key === "1" && imageState["3"] && imageState["t"]) {
-                images["t"].style.display = "block";
-                imageState["t"] = true;
-            } else if ((key === "2" || key === "p") && imageState["t"]) {
-                images["t"].style.display = "none";
-                imageState["t"] = false;
+            if (key === "1" && imageState["3"] && imageState["w"]) {
+                images["w"].style.display = "block";
+                imageState["w"] = true;
+            } else if ((key === "2" || key === "p") && imageState["w"]) {
+                images["w"].style.display = "none";
+                imageState["w"] = false;
             }
         }
 
         if (key === "p") {
             var pepe = images["p"];
             var pepeState = imageState["p"];
-            var tungsten = images["t"];
-            var tungstenState = imageState["t"];
+            var tungsten = images["w"];
+            var tungstenState = imageState["w"];
 
             if (pepeState) {
                 pepe.style.display = "none";
@@ -98,23 +98,23 @@
 
                 if (tungstenState) {
                     tungsten.style.display = "none";
-                    imageState["t"] = false;
+                    imageState["w"] = false;
                 }
             }
         }
 
-        if (key === "t") {
-            var tungsten = images["t"];
-            var tungstenState = imageState["t"];
+        if (key === "w") {
+            var tungsten = images["w"];
+            var tungstenState = imageState["w"];
             var pepe = images["p"];
             var pepeState = imageState["p"];
 
             if (tungstenState) {
                 tungsten.style.display = "none";
-                imageState["t"] = false;
+                imageState["w"] = false;
             } else {
                 tungsten.style.display = "block";
-                imageState["t"] = true;
+                imageState["w"] = true;
 
                 if (pepeState) {
                     pepe.style.display = "none";
